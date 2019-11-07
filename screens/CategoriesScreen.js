@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import { CATEGORIES } from '../data/dummy-data';
-import Colors from '../constants/Colors';
 import CategoryGridTile from '../components/CategoryGridTile';
 
 
