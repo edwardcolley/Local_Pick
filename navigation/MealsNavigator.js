@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 import CategoriesScreen from '../screens/CategoriesScreen';
-import CategoryMealScreen from '../screens/CategoryMealScreen';
+import CategoryMealsScreen from '../screens/CategoryMealScreen';
 import MealDetailScreen from '../screens/MealDetailsScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import FiltersScreen from '../screens/FiltersScreen';
@@ -34,7 +34,7 @@ const MealsNavigator = createStackNavigator(
       screen: CategoriesScreen
     },
     CategoryMeals: {
-      screen: CategoryMealScreen
+      screen: CategoryMealsScreen
     },
     MealDetail: MealDetailScreen
   },
@@ -65,9 +65,12 @@ const tabScreenConfig = {
         );
       },
       tabBarColor: Colors.primaryColor,
-      tabBarLabel: Platform.OS === 'android'
-        ? <Text style={{ fontFamily: 'open-sans-bold' }}>Meals</Text>
-        : 'Meals'
+      tabBarLabel:
+        Platform.OS === 'android' ? (
+          <Text style={{ fontFamily: 'open-sans-bold' }}>Meals</Text>
+        ) : (
+          'Meals'
+        )
     }
   },
   Favorites: {
@@ -77,9 +80,12 @@ const tabScreenConfig = {
         return <Ionicons name="ios-star" size={25} color={tabInfo.tintColor} />;
       },
       tabBarColor: Colors.accentColor,
-      tabBarLabel: Platform.OS === 'android'
-        ? <Text style={{ fontFamily: 'open-sans-bold' }}>Favorites</Text>
-        : 'Favorites'
+      tabBarLabel:
+        Platform.OS === 'android' ? (
+          <Text style={{ fontFamily: 'open-sans-bold' }}>Favorites</Text>
+        ) : (
+          'Favorites'
+        )
     }
   }
 };
@@ -87,20 +93,20 @@ const tabScreenConfig = {
 const MealsFavTabNavigator =
   Platform.OS === 'android'
     ? createMaterialBottomTabNavigator(tabScreenConfig, {
-      activeTintColor: 'white',
-      shifting: true,
-      barStyle: {
-        backgroundColor: Colors.primaryColor
-      }
-    })
+        activeTintColor: 'white',
+        shifting: true,
+        barStyle: {
+          backgroundColor: Colors.primaryColor
+        }
+      })
     : createBottomTabNavigator(tabScreenConfig, {
-      tabBarOptions: {
-        labelStyle: {
-          fontFamily: 'open-sans-bold'
-        },
-        activeTintColor: Colors.accentColor
-      }
-    });
+        tabBarOptions: {
+          labelStyle: {
+            fontFamily: 'open-sans'
+          },
+          activeTintColor: Colors.accentColor
+        }
+      });
 
 const FiltersNavigator = createStackNavigator(
   {
